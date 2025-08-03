@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Exposure Cube</title>
+  
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 600,
+      'GRAD' 0,
+      'opsz' 40
+    }
+  </style>
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div id="container">  
+
+  <!-- Page Title -->
+
+  <div class="page-title section-container">
+
+    <div class="page-title-left display-title">      
+      <div class="title-name h1">
+        <span id="header-title">Kubus Eksposure</span>
+        <div class="title-icon"><span class="material-symbols-outlined h1">deployed_code</span></div>
+      </div>
+      
+      <div class="bottom">
+        <span class="title-name p" id="header-desc">Cara Baru Memahami Eksposure</span> 
+      </div>
+    </div>
+
+    <div class="page-title-right">
+      <div></div>
+      <div class="bottom title-creator">
+        <span class="title-name p title-creator" id="header-creator">oleh Ramandika Project</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!--
+  <div class="bottom title-desc">
+    <p>Exposure Cube is a new concept that reimagines the traditional exposure triangle in photography by visualizing the relation between the three key elements: Shutter Speed, Aperture, and ISO, in the form of a 3D cube.</p>
+    <p>This spatial approach allows users to intuitively grasp how changes in one element affect the other two, helping them manage exposure with greater precision.</p>
+  </div>
+  -->
+
+  <!-- Language -->
+
+  <div class="lang-container section-container">
+    <div class="display-title lang-switcher">
+      <div class="lang-switcher-title"><span><h2 id="lang-title">Language</h2></span></div>
+      <div class="lang-switcher-title"><span><p id="lang-desc">Choose your language</p></span></div>
+    </div>
+
+    <div class="lang-switch-container">
+      <div class="lang-switcher">
+        <button class="lang-btn active" onclick="setLanguage('en', this)"><h2>English</h2></button>
+        <button class="lang-btn" onclick="setLanguage('id', this)"><h2>Indonesia</h2></button>
+      </div>
+    </div>    
+  </div>
+
+  
+  <!-- 
+  <div class="content">
+    <h2></h2>
+    <p></p>
+    <p></p>
+    Tambah konten lain pakai ID unik
+    <h3 id="footer-title"></h3>
+    <p id="footer-desc"></p>
+  </div> -->
+
+  <!-- Page Intro -->
+  
+  <div class="tab-container section-container">
+
+    <div class="tab-buttons">
+
+      <div class="intro-title">
+        <span><h2 id="title-what">What is it?</h2></span>  <!-- What is it? -->
+      </div>
+      <div class="filler01"></div>    
+
+    </div>
+
+    <div class="tab-content">
+      <p id="desc-1"><strong>Exposure Cube</strong> is a new concept that reimagines the traditional exposure triangle in photography by visualizing the relation between the three key elements: <strong class='red'>Shutter Speed</strong>, <strong class='green'>Aperture</strong>, and <strong class='blue'>ISO</strong>, in the form of a 3D cube."</p>
+      <p id="desc-2"></p>
+    </div>
+
+  </div>
+
+  
+  <!-- Atas: Sistem Kubus -->
+
+  <div id="cube-section" class="section-container">
+    
+    <div class="display-title section-title-1">
+      <h2 id="simulation-title">
+        Simulation
+      </h2>
+
+      <div class="container-section-2">
+        <div class="display-title section-title-2 sistem-kubus">
+          <h2 id="kartesius">Kartesius Display</h2>
+          <div class="display" id="three-container"></div>
+        </div>
+        
+        <!-- Tombol Pengubah -->
+
+        <div class="display-title section-title-2 sistem-kubus section-2-gap" id="">
+          <div>
+            <h2 id="control-title">Control</h2>
+
+            <div class="control-frame">
+              <div class="control-group" id="">
+                <div class="control-group-title display-title">
+                  <h4 class="redbg">Shutter Speed [X]</h4>
+                  <div class="value-control">
+                    <button onclick="changeValue('x', -1)">-</button>
+                    <span class="value" id="x-value"> </span>
+                    <button onclick="changeValue('x', 1)">+</button>
+                  </div>
+                </div>                
+              </div>
+
+              <div class="control-group" id="">
+                <div class="control-group-title display-title">
+                  <h4 class="black-text greenbg">Aperture [Y]</h4>
+                  <div class="value-control">
+                    <button onclick="changeValue('y', -1)">-</button>
+                    <span class="value" id="y-value"> </span>
+                    <button onclick="changeValue('y', 1)">+</button>
+                  </div>
+                </div>                
+              </div>
+
+              <div class="control-group" id="">
+                <div class="control-group-title display-title">
+                  <h4 class="white-text bluebg" >ISO [Z]</h4>
+                  <div class="value-control">
+                    <button onclick="changeValue('z', -1)">-</button>
+                    <span class="value" id="z-value"> </span>
+                    <button onclick="changeValue('z', 1)">+</button>
+                  </div>
+                </div>                
+              </div>
+            </div>
+
+          </div> 
+        </div>      
+      </div>
+    </div>
+    
+  </div>
+
+  <!-- Bawah: Image Preview -->
+
+  <div id="result-section" class="section-container">
+    <div class="display-title section-title-1">
+      <h2 id="result-title">
+        Result
+      </h2>
+
+      <div class="container-section-2 container-image">
+        
+        <div class="display-title section-title-2">
+          <h2 id="img-prev">Image Preview</h2>
+          <div class="image-group">
+            <img id="img-preview" src="assets/images/z01/y01___x01.jpg" alt="Preview Normal">
+            <!--https://res.cloudinary.com/dyakzym1d/image/upload/v1753695886/y01___x08.jpg-->
+          </div>
+        </div>
+
+        <div class="display-title section-title-2 section-2-gap">
+          <h2 id="img-prev-zoom">Image Preview [4× zoom]</h2>
+          <div class="image-group zoom">
+            <img id="img-preview-02" src="assets/images/z01/y01___x01.jpg" class="img-zoom" alt="Preview [4× zoom]">
+          </div>
+        </div>
+        
+      </div>
+
+    </div>
+    
+  </div> <!-- Bawah: Image Preview -->
+
+
+  <!-- Guides -->
+
+  <div class="guides-section section-container">
+    <div class="display-title section-title-1">
+      
+      <div class="guides-title greenbg">
+        <div class="guides-title-left">
+          <h2 id="how-to-title">How to use</h2>
+        </div>
+
+        <div class="guides-title-right">
+          <button id="toggle-guides" class="toggle-btn blackbg white">
+            <h4 id="">-</h4>
+            <!--<span class="material-symbols-outlined">
+              keyboard_arrow_down
+            </span>-->
+          </button>
+        </div>
+      </div>
+
+      <div id="guides-body" class="">
+        <!--
+        <div class="tab-content guides-content">
+          <p id="">ugif</p>
+
+          <p id="desc-2"></p>
+        </div>-->
+        
+        <section class="usage-guide">
+        
+          <div class="step">
+            <div class="step-number"><h3>1</h3></div>
+            <div class="step-content">
+              <h4 class="green" id="step-1-title">Atur</h4>
+              <div id="step-1-p">
+                <p>Pada bagian <strong class="whitebg black-text highlight-box">Tombol Kontrol</strong></p>
+
+                <p>Klik tombol <strong class="blackbg03 highlight-box">-</strong> dan <strong class="blackbg03 highlight-box">+</strong> pada masing-masing kategori untuk mengubah nilai</p>
+
+                <p><strong class="redbg highlight-box">Shutter Speed [X]</strong>, <strong class="greenbg highlight-box">Aperture [Y]</strong>, dan <strong class="bluebg highlight-box">ISO [Z]</strong></p>
+              </div>
+
+              
+
+            </div>
+          </div>
+      
+          <div class="step">
+            <div class="step-number"><h3>2</h3></div>
+            <div class="step-content">
+              <h4 class="green" id="step-2-title">Perhatikan Posisi Titik</h4>
+              <div id="step-2-p">
+                <p>Titik kuning <strong class="dot-yellow yellowbg high highlight-box"></strong> adalah perpotongan antara ketiga sumbu, akan berpindah mengikuti kombinasi yang dipilih, merepresentasikan posisi 3D di dalam ruang exposure.</p>
+                <p></p>
+              </div>
+              
+            </div>
+          </div>
+      
+          <div class="step">
+            <div class="step-number"><h3>3</h3></div>
+            <div class="step-content">
+              <h4 class="green" id="step-3-title">Lihat Hasil Foto</h4>
+              <div id="step-3-p">
+                <p>Foto di <strong class="whitebg black-text highlight-box">Gambar</strong>, dan <strong class="whitebg black-text highlight-box">Gambar [4x zoom]</strong> akan muncul sebagai simulasi kombinasi dari ketiga elemen, menunjukkan efek nyata dari pergeseran tiap pengaturan yang dipilih.</p>
+              </div>
+              
+            </div>
+          </div>
+      
+          <div class="step">
+            <div class="step-number"><h3>4</h3></div>
+            <div class="step-content">
+              <h4 class="green" id="step-4-title">Silakan bereksperimen!</h4>
+              <div id="step-4-p">
+                <p>Coba berbagai macam kombinasi pengaturan untuk melihat efek yang ditimbulkan dari tiap naik dan turunnya nilai <strong class='red'>Shutter Speed</strong>, <strong class='green'>Aperture</strong>, and <strong class='blue'>ISO</strong>. Semakin banyak yang kalian coba,semakin paham perubahannya</p>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+      </div>  <!-- guides-body -->
+    </div>
+
+  </div>  <!-- Guides -->
+
+  <!-- Warning -->
+  
+  <div id="notice-section" class="section-container">
+    <div class="display-title section-title-1 notice-title">
+      <div class="notice-title-container">
+        <span class="material-symbols-outlined warning-icon black-text">
+        warning
+        </span>
+        <h2 id="notice-title" class="">
+        Notice
+        </h2>
+      </div>
+      
+
+      <div class="notice-body">
+        <div class="tab-content guides-content">
+          <div id="notice-p">
+            <p id=''>This project is still in constant development. You may find some error, or something that incompleted.</p>
+            <p id=''>Images may load longer than expected, might be due to network connection, or server bandwidth.</p>
+            <p id=''>The Aperture and ISO axis are not full with 10 variables due to camera limitations.</p>
+            <p id=''>Some images might slightly over or under-exposed due to fluctuation of weather condition while shooting, but images can still give a general overview on the current selected settings.</p>
+          </div>
+          
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer></footer>
+
+</div> <!-- Container -->
+
+</div>
+
+<!-- Three.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+
+<!--  ########## ########## ########## ########## ##########  -->
+
+<script>
+  const translations = {
+    en: {
+      // Page Header
+
+      "header-title": "Exposure Cube",
+      "header-desc": "A New Way to Understand Exposure",
+      "header-creator": "by Ramandika Project",
+
+      
+
+      // Language
+
+      "lang-title": "Language",
+      "lang-desc": "Choose language",
+
+      
+
+      // What is it?
+
+      "title-what": "What is it?",
+
+      "desc-1": "<strong>Exposure Cube</strong> is a new concept that reimagines the traditional exposure triangle in photography by visualizing the relation between the three key elements: <strong class='red'>Shutter Speed</strong>, <strong class='green'>Aperture</strong>, and <strong class='blue'>ISO</strong>, in the form of a 3D cube.",
+
+      "desc-2": "This spatial approach allows users to intuitively grasp how changes in one element affect the other two, helping them manage exposure with greater precision.",
+
+
+
+      // Sistem Kubus
+
+      "simulation-title": "Simulation",
+      "kartesius": "Cartesian Graph",
+      "control-title": "Control Button",
+
+
+
+      // Result
+
+      "result-title": "Result",
+      "img-prev": "Image Preview",
+      "img-prev-zoom": "Image Preview [4x zoom]",
+
+
+
+      // How to Use
+
+      "how-to-title": "How to use",
+      "expand01": "Expand",
+      "collapse01": "Collapse",
+
+      "step-1-title": "Set Combination",
+      "step-1-p": 
+      "<p>In <strong class='whitebg black-text highlight-box'>Control Button</strong> section</p><p>Click <strong class='blackbg03 highlight-box'>-</strong> and <strong class='blackbg03 highlight-box'>+</strong> button on each category to change the value of</p><p><strong class='redbg highlight-box'>Shutter Speed [X]</strong>, <strong class='greenbg highlight-box'>Aperture [Y]</strong>, and <strong class='bluebg highlight-box'>ISO [Z]</strong></p>",
+
+      "step-2-title": "Observe Dot Position",
+      "step-2-p": 
+      "<p>Yellow dot <strong class='dot-yellow yellowbg high highlight-box'></strong> is the intersection between the three axis, will move according to the selected combination, represents the 3D position in exposure cube.</p><p></p>",
+
+      "step-3-title": "View Image Results",
+      "step-3-p": 
+      "<p>Photos in</p> <p><strong class='whitebg black-text highlight-box'>Image Preview</strong>, and <strong class='whitebg black-text highlight-box'>Image Preview [4x zoom]</strong></p> <p>will appear as a simulation of the three elements combination, shows the real effect of shifting each selected setting..</p>",
+
+      "step-4-title": "Lets Experiment!",
+      "step-4-p": 
+      "<p>Try different settings combinations to see the effect of each increase and decrease in values of <strong class='red'>Shutter Speed</strong>, <strong class='green'>Aperture</strong>, and <strong class='blue'>ISO</strong>. The more you try, the more you understand the changes</p>",
+
+
+
+      // Notices
+
+      "notice-title": "Notice",
+      "notice-p":
+      "<p id=''>This project is still in constant development. You may find some error, or something that incomplete.</p><p id=''>Images may load longer than expected, might be due to network connection, or server bandwidth.</p><p id=''>The Aperture and ISO axis are not full with 10 variables due to camera limitations.</p><p id=''>Some images might slightly over or under-exposed due to fluctuation of weather condition while shooting, but images can still give a general overview on the current selected settings.</p>",
+
+      //"footer-title": "Learn More",
+
+      //"footer-desc": "Visit our documentation or try the interactive cube."
+    },
+    id: {
+      // Page Header
+
+      "header-title": "Kubus Eksposur",
+      "header-desc": "Cara Baru memahami Eksposur",
+      "header-creator": "oleh Ramandika Project",
+
+      
+
+      // Language
+
+      "lang-title": "Bahasa",
+      "lang-desc": "Pilih bahasa",
+
+      
+
+      // What is it?
+
+      "title-what": "Apaan tuh?",
+
+      /*
+      "desc-1": "<strong>Kubus Exposure</strong> adalah konsep baru yang membayangkan ulang segitiga eksposur dalam fotografi, dengan memvisualisasikan hubungan antara tiga elemen utama: <strong id='red'>Shutter Speed</strong>, <strong id='green'>Aperture</strong>, dan <strong id='blue'>ISO</strong> dalam bentuk kubus 3D.",
+
+      "desc-2": "Pendekatan spasial ini membantu pengguna memahami secara intuitif bagaimana perubahan pada satu elemen memengaruhi dua lainnya, sehingga lebih presisi dalam mengatur eksposur.",*/
+
+      "desc-1": "<strong>Kubus eksposure</strong> adalah konsep yang memperbarui segitiga eksposur tradisional dalam fotografi dengan memvisualisasi- -kan hubungan antara tiga elemen utama: <strong class='red'>Shutter Speed</strong>, <strong class='green'>Aperture</strong>, dan <strong class='blue'>ISO</strong>, dalam bentuk kubus 3D.",
+
+      "desc-2": "Pendekatan spasial ini membantu pengguna secara intuitif memahami bagaimana perubahan pada satu elemen memengaruhi dua lainnya, sehingga lebih presisi dalam mengatur eksposur.",
+
+
+
+      // Sistem Kubus
+
+      "simulation-title": "Simulasi",
+      "kartesius": "Grafik Kartesius",
+      "control-title": "Tombol Kontrol",
+
+
+
+      // Result
+
+      "result-title": "Hasil",
+      "img-prev": "Tampilan Gambar",
+      "img-prev-zoom": "Tampilan Gambar [4x zoom]",
+
+
+
+      // How to Use
+
+      "how-to-title": "Cara Pakai",
+      "expand01": "Buka",
+      "collapse01": "Tutup",
+
+      "step-1-title": "Atur Kombinasi",
+      "step-1-p": 
+      "<p>Pada bagian <strong class='whitebg black-text highlight-box'>Tombol Kontrol</strong></p><p>Klik tombol <strong class='blackbg03 highlight-box'>-</strong> dan <strong class='blackbg03 highlight-box'>+</strong> pada masing-masing kategori untuk mengubah nilai</p><p><strong class='redbg highlight-box'>Shutter Speed [X]</strong>, <strong class='greenbg highlight-box'>Aperture [Y]</strong>, dan <strong class='bluebg highlight-box'>ISO [Z]</strong></p>",
+
+      "step-2-title": "Perhatikan Posisi Titik",
+      "step-2-p": 
+      "<p>Titik kuning <strong class='dot-yellow yellowbg high highlight-box'></strong> adalah perpotongan antara ketiga sumbu, akan berpindah mengikuti kombinasi yang dipilih, merepresentasikan posisi 3D di dalam kubus eksposur.</p><p></p>",
+
+      "step-3-title": "Lihat Hasil Foto",
+      "step-3-p": 
+      "<p>Foto di</p> <p><strong class='whitebg black-text highlight-box'>Tampilan Gambar</strong>, dan <strong class='whitebg black-text highlight-box'>Tampilan Gambar [4x zoom]</strong></p> <p>akan muncul sebagai simulasi kombinasi dari ketiga elemen, menunjukkan efek nyata dari pergeseran tiap pengaturan yang dipilih.</p>",
+
+      "step-4-title": "Mari Bereksperimen!",
+      "step-4-p": 
+      "<p>Coba berbagai macam kombinasi pengaturan untuk melihat efek yang ditimbulkan dari tiap naik dan turunnya nilai <strong class='red'>Shutter Speed</strong>, <strong class='green'>Aperture</strong>, dan <strong class='blue'>ISO</strong>. Semakin banyak yang kalian coba, semakin paham perubahannya</p>",
+
+
+
+      // Notices
+
+      "notice-title": "Perhatian",
+      "notice-p":
+      "<p id=''>Proyek ini masih tetap dalam tahap pengembangan. Mungkin akan ada error atau sesuatu yang belum lengkap.</p><p id=''>Gambar bisa saja dimuat lebih lama, bisa karena koneksi, atau bandwidth server.</p><p id=''>Sumbu Aperture dan ISO tidak penuh dengan 10 variabel karena batas kemampuan kamera.</p><p id=''>Beberapa gambar mungkin sedikit lebih atau kurang terang karena fluktuasi kondisi cuaca saat pemotretan, tapi masih bisa memberi gambaran umum tentang pengaturan yang dipilih.</p>",
+
+      //"footer-title": "Pelajari Lebih Lanjut",
+
+      //"footer-desc": "Kunjungi dokumentasi atau coba kubus interaktifnya."
+    }
+  };
+
+  function setLanguage(lang, btn) {
+    // Ganti isi konten sesuai ID dan bahasa
+    const content = translations[lang];
+    for (const id in content) {
+      const el = document.getElementById(id);
+      if (el) el.innerHTML = content[id];
+    }
+
+    // Update tombol aktif
+    const buttons = document.querySelectorAll('.lang-btn');
+    buttons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  // Set default language
+  window.addEventListener('DOMContentLoaded', () => {
+    setLanguage('en', document.querySelector('.lang-btn.active'));
+  });
+</script>
+
+<!-- Intro Tab -->
+
+<script>
+  function openTab(tabId) {
+    // Sembunyikan semua tab
+    const tabs = document.querySelectorAll(".tab-content");
+    tabs.forEach(tab => tab.style.display = "none");
+
+    // Hapus kelas aktif dari semua tombol
+    const buttons = document.querySelectorAll(".tab-buttons button");
+    buttons.forEach(btn => btn.classList.remove("active"));
+
+    // Tampilkan tab yang dipilih dan aktifkan tombolnya
+    document.getElementById(tabId).style.display = "block";
+    event.currentTarget.classList.add("active");
+  }
+</script>
+
+<!--  ########## ########## ########## ########## ##########  -->
+
+<!-- Sistem Kubus -->
+
+<script>
+  // Variabel nilai
+  /*
+  const xLabels = 
+  [' ','1/4000','1/1000','1/250','1/80','1/20','1/5','0"6','2"5','10"','30"'];
+  const yLabels = 
+  [' ','f/22','f/18','f/13','f/10','f/7.1','f/5.6','f/4.0','f/3.2','f/2.2','f/1.8'];
+  const zLabels = 
+  [' ','100','160','250','400','640','1000','1600','2500','4000','6400'];
+  */
+
+  // Variabel nilai Konstanta
+
+  const x00 = ' ' ;
+  const x01 = '1/1600' ;
+  const x02 = '1/800' ;
+  const x03 = '1/400' ;
+  const x04 = '1/200' ;
+  const x05 = '1/100' ;
+  const x06 = '1/50' ;
+  const x07 = '1/25' ;
+  const x08 = '1/13' ;
+  const x09 = '1/6' ;
+  const x10 = '0"3' ;
+
+  const y00 = ' ' ;
+  const y01 = 'f/22' ;
+  const y02 = 'f/16' ;
+  const y03 = 'f/11' ;
+  const y04 = 'f/8.0' ;
+  const y05 = 'f/5.6' ;
+  const y06 = 'f/4.0' ;
+  const y07 = 'f/2.8' ;
+  const y08 = 'f/2.0' ;
+  const y09 = ' ' ;
+  const y10 = ' ' ;
+  
+  const z00 = ' ' ;
+  const z01 = '100' ;
+  const z02 = '200' ;
+  const z03 = '400' ;
+  const z04 = '800' ;
+  const z05 = '1600' ;
+  const z06 = '3200' ;
+  const z07 = '6400' ;
+  const z08 = ' ' ;
+  const z09 = ' ' ;
+  const z10 = ' ' ;
+
+  // Variabel nilai Template
+  const xLabels = [x00,x01,x02,x03,x04,x05,x06,x07,x08,x09,x10];
+  const yLabels = [y00,y01,y02,y03,y04,y05,y06,y07,y08,y09,y10];
+  const zLabels = [z00,z01,z02,z03,z04,z05,z06,z07,z08,z09,z10];
+
+  let xIndex = 0, yIndex = 0, zIndex = 0;
+
+  const xDisplay = document.getElementById('x-value');
+  const yDisplay = document.getElementById('y-value');
+  const zDisplay = document.getElementById('z-value');
+
+  
+
+  // Image Preview
+
+  // Index State
+  let xIndexImg = 0, yIndexImg = 0, zIndexImg = 0;
+
+  // Element Refs
+  const xDisplayImg = document.getElementById('x-value');
+  const yDisplayImg = document.getElementById('y-value');
+  const zDisplayImg = document.getElementById('z-value');
+  const imgPreview = document.getElementById('img-preview');
+  const imgPreview02 = document.getElementById('img-preview-02');
+
+  // Update Label Display & Image
+  function updateDisplay() {
+    xDisplayImg.textContent = xLabels[xIndexImg];
+    yDisplayImg.textContent = yLabels[yIndexImg];
+    zDisplayImg.textContent = zLabels[zIndexImg];
+
+    const xStr = `x${xIndexImg.toString().padStart(2, '0')}`;
+    const yStr = `y${yIndexImg.toString().padStart(2, '0')}`;
+    const zStr = `z${zIndexImg.toString().padStart(2, '0')}`;
+
+    //const imgPath = `assets/images/${zStr}/${yStr}___${xStr}.jpg`;
+    const imgPath = `https://res.cloudinary.com/dyakzym1d/image/upload/${zStr}_${yStr}_${xStr}.JPG`;
+    //https://res.cloudinary.com/dyakzym1d/image/upload/y02___x05.jpg
+    //
+    //https://res.cloudinary.com/dyakzym1d/image/upload/${yStr}___${xStr}.jpg
+    imgPreview.src = imgPath;
+    imgPreview02.src = imgPath;
+  }
+
+  // Axis Move
+  function changeValue(axis, delta) {
+    if (axis === 'x') {
+      //(start sumbu, panjang max)
+      xIndex = Math.max(0, Math.min(xIndex + delta, xLabels.length - 1));
+      
+      xDisplay.textContent = xLabels[xIndex];
+
+      //offset titik temu
+      point.position.x = xIndex - 0;
+      
+      //offset Line Y
+      lineY.position.x = xIndex - 0;
+
+      //Line Y Width
+      groupLineY.position.x = xIndex - 0;
+
+      xIndexImg = Math.max(0, Math.min(10, xIndexImg + delta));
+    }
+    if (axis === 'y') {
+      //(start sumbu, panjang max)
+      yIndex = Math.max(0, Math.min(yIndex + delta, yLabels.length - 1));
+      
+      yDisplay.textContent = yLabels[yIndex];
+      
+      //offset titik temu
+      point.position.y = yIndex - 0;
+      
+      //offset Line X
+      lineX.position.y = yIndex - 0;
+
+      //Line X Width
+      groupLineX.position.y = yIndex - 0;
+      
+      yIndexImg = Math.max(0, Math.min(10, yIndexImg + delta));
+    }
+    if (axis === 'z') {
+      zIndex = Math.max(0, Math.min(zIndex + delta, zLabels.length - 1));
+      zDisplay.textContent = zLabels[zIndex];
+
+      plane01.position.z = zIndex - 0; // (black01)
+      plane02.position.z = zIndex - 0; // (white01)
+      
+      
+      //offset titik temu Line x & Line y, X & Y Plane (yellow)
+      point.position.z = zIndex - 0;
+
+      //offset Line y, X & Y Plane (white01)
+      lineY.position.z = zIndex - 0;
+
+      //offset Line x, X & Y Plane (white01)
+      lineX.position.z = zIndex - 0;
+
+
+
+      //offset Axis y, Move Z axis
+      axisY.position.z = zIndex - 0;
+
+      //offset Axis x, Move Z axis
+      axisX.position.z = zIndex - 0;
+      
+
+      //offset Dot, x axis, Move z axis
+      xMoveDots.forEach(dot => {
+        dot.position.z = zIndex;
+      });
+      //offset Dot, y axis, Move z axis
+      yMoveDots.forEach(dot => {
+        dot.position.z = zIndex;
+      });
+
+      //X & Y axis width, moving with XY Plane in Z axis
+      group2.position.z = zIndex - 0;
+      groupLineX.position.z = zIndex - 0;
+      groupLineY.position.z = zIndex - 0;
+
+      // Label X dan Y mengikuti posisi Z
+      xTextLabels.forEach(lbl => {
+        lbl.position.z = zIndex;
+      });
+      yTextLabels.forEach(lbl => {
+        lbl.position.z = zIndex;
+      });
+      
+      zIndexImg = Math.max(0, Math.min(10, zIndexImg + delta));
+
+    }
+
+    updateDisplay();
+  }
+
+  // Initial Display
+  updateDisplay();
+
+  // Three.js Init
+
+  // Kamera
+  const width = 860;
+  const height = 860;
+
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x0D0D0D); // Warna
+
+  const camera = new THREE.PerspectiveCamera(30, window.innerWidth/window.innerHeight, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  
+  renderer.setSize(width, height);
+  camera.aspect = width / height;
+  camera.updateProjectionMatrix();
+  
+  document.getElementById('three-container').appendChild(renderer.domElement);
+  
+  // Posisi kamera awal
+  camera.position.set(12.5, 12.5, 30);
+  camera.lookAt(scene.position);
+  camera.translateX(2); // geser kanan (relatif ke arah kamera)
+  camera.translateY(2); // geser atas
+  camera.translateZ(10); // maju
+
+  // Cube Plane
+  /*
+    // XY , Black
+  const planeXYGeo = new THREE.PlaneGeometry(10, 10);
+  const planeXYMat = new THREE.MeshBasicMaterial({ color: 0x1E1E1E, side: THREE.DoubleSide, transparent: true, opacity: 0.75 });
+  const planeXY = new THREE.Mesh(planeXYGeo, planeXYMat);
+  planeXY.rotation.y = -Math.PI / 1;
+  planeXY.position.z = zIndex - 0.1;
+  planeXY.position.x = xIndex + 5;
+  planeXY.position.y = yIndex + 5;
+  scene.add(planeXY);
+
+  
+    // XZ , Black
+  const planeXZGeo = new THREE.PlaneGeometry(10, 10);
+  const planeXZMat = new THREE.MeshBasicMaterial({ color: 0x1E1E1E, side: THREE.DoubleSide, transparent: true, opacity: 0.75 });
+  const planeXZ = new THREE.Mesh(planeXZGeo, planeXZMat);
+  planeXZ.rotation.x = -Math.PI / 2;
+  planeXZ.position.z = zIndex + 5;
+  planeXZ.position.x = xIndex + 5;
+  planeXZ.position.y = yIndex - 0.0;
+  scene.add(planeXZ);
+
+    // YZ , Black
+  const planeYZGeo = new THREE.PlaneGeometry(10, 10);
+  const planeYZMat = new THREE.MeshBasicMaterial({ color: 0x1E1E1E, side: THREE.DoubleSide, transparent: true, opacity: 0.75 });
+  const planeYZ = new THREE.Mesh(planeYZGeo, planeYZMat);
+  planeYZ.rotation.y = -Math.PI / 2;
+  planeYZ.position.z = zIndex + 5;
+  planeYZ.position.x = xIndex - 0.1;
+  planeYZ.position.y = yIndex + 5;
+  scene.add(planeYZ);
+  */
+
+  // Axis
+  function createAxis(length, color, dir) {
+    const mat = new THREE.LineBasicMaterial({ color, linewidth: 2 });
+    const points = [new THREE.Vector3(), dir.clone().setLength(length)];
+    const geo = new THREE.BufferGeometry().setFromPoints(points);
+    const line = new THREE.Line(geo, mat);
+    return line;
+  }
+
+  scene.add(createAxis(20, 0xF94646, new THREE.Vector3(1,0,0))); // X
+  scene.add(createAxis(20, 0x48ED5F, new THREE.Vector3(0,1,0))); // Y
+  scene.add(createAxis(20, 0x3160F4, new THREE.Vector3(0,0,1))); // Z
+
+  // Grid Dots
+  const dotGeo = new THREE.SphereGeometry(0.125);
+  const dotMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
+
+  for (let i = 1; i <= 10; i++) {
+    /*
+    const xDot = new THREE.Mesh(dotGeo, dotMat);
+    xDot.position.set(i - 0, 0, 0);
+    scene.add(xDot);
+
+    const yDot = new THREE.Mesh(dotGeo, dotMat);
+    yDot.position.set(0, i - 0, 0);
+    scene.add(yDot);
+    */
+
+    const zDot = new THREE.Mesh(dotGeo, dotMat);
+    zDot.position.set(0, 0, i - 0);
+    scene.add(zDot);
+  }
+
+  // Grid Dots Move
+  
+  const xMoveDots = []; // array penyimpanan dot sumbu X
+  const yMoveDots = [];
+  const dotMoveGeo = new THREE.SphereGeometry(0.125);
+  const dotMoveMat = new THREE.MeshBasicMaterial({ color: 0xFFFFFF }); //cyan white
+
+  for (let i = 1; i <= 10; i++) {
+    const xDot = new THREE.Mesh(dotMoveGeo, dotMoveMat);
+    xDot.position.set(i, 0, zIndex);
+    scene.add(xDot);
+    xMoveDots.push(xDot);
+    
+    const yDot = new THREE.Mesh(dotMoveGeo, dotMoveMat);
+    yDot.position.set(0, i, zIndex);
+    scene.add(yDot);
+    yMoveDots.push(yDot);
+  }
+
+  // XY Plane
+
+    // 01 , Black
+  const plane01Geo = new THREE.PlaneGeometry(10, 10);
+  const plane01Mat = new THREE.MeshBasicMaterial({ color: 0x000000, side: THREE.DoubleSide, transparent: true, opacity: 0.75 });
+  const plane01 = new THREE.Mesh(plane01Geo, plane01Mat);
+  plane01.rotation.y = -Math.PI / 1;
+  plane01.position.z = zIndex - 0;
+  plane01.position.x = xIndex + 5;
+  plane01.position.y = yIndex + 5;
+  scene.add(plane01);
+  
+    //02 , White
+  const plane02Geo = new THREE.PlaneGeometry(10, 10);
+  const plane02Mat = new THREE.MeshBasicMaterial({ color: 0xffffff, side: THREE.DoubleSide, transparent: true, opacity: 0.15 });
+  const plane02 = new THREE.Mesh(plane02Geo, plane02Mat);
+  plane02.rotation.y = -Math.PI / 1;
+  plane02.position.z = zIndex - 0;
+  plane02.position.x = xIndex + 5;
+  plane02.position.y = yIndex + 5;
+  scene.add(plane02);
+
+  // Moving X Line (based on y)
+  const lineXMat = new THREE.LineBasicMaterial({ color: 0xFFFFFF });
+  const lineXGeo = new THREE.BufferGeometry().setFromPoints([
+    new THREE.Vector3(0, 0, 0),
+    new THREE.Vector3(10, 0, 0)
+  ]);
+  const lineX = new THREE.Line(lineXGeo, lineXMat);
+  lineX.rotation.z = 0;
+  scene.add(lineX);
+
+  // Moving Y Line (based on x)
+  const lineYMat = new THREE.LineBasicMaterial({ color: 0xFFFFFF });
+  const lineYGeo = new THREE.BufferGeometry().setFromPoints([
+    new THREE.Vector3(0, 0, 0),
+    new THREE.Vector3(0, 10, 0)
+  ]);
+  const lineY = new THREE.Line(lineYGeo, lineYMat);
+  scene.add(lineY);
+
+  // X & Y Axis in XY Plane
+
+  // Moving X Axis (based on y)
+  const axisXMat = new THREE.LineBasicMaterial({ color: 0xF94646 }); //magenta red
+  const axisXGeo = new THREE.BufferGeometry().setFromPoints([
+    new THREE.Vector3(0, 0, 0),
+    new THREE.Vector3(10, 0, 0)
+  ]);
+  const axisX = new THREE.Line(axisXGeo, axisXMat);
+  axisX.rotation.z = 0;
+  scene.add(axisX);
+
+  // Moving Y Axis (based on x)
+  const axisYMat = new THREE.LineBasicMaterial({ color: 0x48ED5F }); //magenta green
+  const axisYGeo = new THREE.BufferGeometry().setFromPoints([
+    new THREE.Vector3(0, 0, 0),
+    new THREE.Vector3(0, 10, 0)
+  ]);
+  const axisY = new THREE.Line(axisYGeo, axisYMat);
+  scene.add(axisY);
+
+  // X & Y Axis Width in XY Plane
+
+  // Grup 1: Tidak bergerak
+  const group1 = new THREE.Group();
+
+  // Grup 2: Bisa digerakkan di sumbu Z
+  const group2 = new THREE.Group();
+
+  // Grup XY: Bisa digerakkan di sumbu Z & XY Plane
+  const groupLineX = new THREE.Group();
+  const groupLineY = new THREE.Group();
+
+  // Grup 2: Bisa digerakkan di sumbu Z
+  //const group2 = new THREE.Group();
+
+  // Fungsi Axis Width Statis
+  function createThickAxis(length, color, dir) {
+    const radius = 0.05;
+    const geometry = new THREE.CylinderGeometry(radius, radius, length, 8);
+    const material = new THREE.MeshBasicMaterial({ color });
+
+    const mesh = new THREE.Mesh(geometry, material);
+
+    // Rotasi silinder ke arah sumbu yang diinginkan
+    const defaultAxis = new THREE.Vector3(0, 1, 0); // default: sumbu Y
+    const quaternion = new THREE.Quaternion().setFromUnitVectors(defaultAxis, dir.clone().normalize());
+    mesh.quaternion.copy(quaternion);
+
+    // Geser silinder agar satu ujung berada di (0,0,0)
+    mesh.position.copy(dir.clone().normalize().multiplyScalar(length / 2));
+
+    return mesh;
+  }
+
+  // Fungsi Axis Width Move XY Plane
+  function createThickAxisLineXY(lengthLineXY, color, dirLineXY) {
+    const radiusLineXY = 0.035;
+    const geometryLineXY = new THREE.CylinderGeometry(radiusLineXY, radiusLineXY, lengthLineXY, 8);
+    const materialLineXY = new THREE.MeshBasicMaterial({ color });
+
+    const meshLineXY = new THREE.Mesh(geometryLineXY, materialLineXY);
+
+    // Rotasi silinder ke arah sumbu yang diinginkan
+    const defaultAxisLineXY = new THREE.Vector3(0, 1, 0); // default: sumbu Y
+    const quaternionLineXY = new THREE.Quaternion().setFromUnitVectors(defaultAxisLineXY, dirLineXY.clone().normalize());
+    meshLineXY.quaternion.copy(quaternionLineXY);
+
+    // Geser silinder agar satu ujung berada di (0,0,0)
+    meshLineXY.position.copy(dirLineXY.clone().normalize().multiplyScalar(lengthLineXY / 2));
+
+    return meshLineXY;
+  }
+
+    // Axis ke grup 1 (statis)
+  group1.add(createThickAxis(10, 0xF94646, new THREE.Vector3(1, 0, 0))); // Axis X
+  group1.add(createThickAxis(10, 0x48ED5F, new THREE.Vector3(0, 1, 0))); // Axis Y
+  group1.add(createThickAxis(10, 0x3160F4, new THREE.Vector3(0, 0, 1))); // Axis Z
+
+    // Axis ke grup 2 (X & Y move in Z axis)
+  group2.add(createThickAxis(10, 0xF94646, new THREE.Vector3(1, 0, 0))); // Axis X magenta red
+  group2.add(createThickAxis(10, 0x48ED5F, new THREE.Vector3(0, 1, 0))); // Axis Y magenta green
+
+    // Line X & Y ke grup XY (Line X & Line Y move in Z axis & XY Plane)
+  groupLineX.add(createThickAxisLineXY(10, 0xFFFFFF, new THREE.Vector3(1, 0, 0))); // Axis X
+  groupLineY.add(createThickAxisLineXY(10, 0xFFFFFF, new THREE.Vector3(0, 1, 0))); // Axis Y
+
+  // Masukkan grup ke dalam scene
+  scene.add(group1);
+  scene.add(group2);
+  scene.add(groupLineX);
+  scene.add(groupLineY);
+  
+
+  // Intersect Point
+  const pointGeo = new THREE.SphereGeometry(0.2);
+  const pointMat = new THREE.MeshBasicMaterial({ color: 0xFCB142 });
+  const point = new THREE.Mesh(pointGeo, pointMat);
+  scene.add(point);
+
+  function animate() {
+    requestAnimationFrame(animate);
+    renderer.render(scene, camera);
+  }
+
+  // Label  
+
+  function createTextLabelSpriteTransparent({
+    text = '',
+    fontSize = 64,
+    fontFamily = 'Azeret Mono',
+    fontWeight = '400',
+    textColor = '#ffffff',
+    canvasWidth = 256,
+    canvasHeight = 128,
+    scale = 1,
+  } = {}) {
+    const canvas = document.createElement('canvas');
+    canvas.width = canvasWidth;
+    canvas.height = canvasHeight;
+    const ctx = canvas.getContext('2d');
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.font = `${fontWeight} ${fontSize}px ${fontFamily}`;
+    ctx.fillStyle = textColor;
+    ctx.textAlign = 'right';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(text, canvas.width / 2, canvas.height / 2);
+
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.minFilter = THREE.LinearFilter;
+    texture.needsUpdate = true;
+
+    const material = new THREE.SpriteMaterial({
+      map: texture,
+      transparent: true,
+    });
+
+    const sprite = new THREE.Sprite(material);
+    sprite.scale.set(scale * 2.0, scale, 1); // ukuran label di world unit
+    return sprite;
+  }
+
+  // Label X (bergerak di sumbu Z)
+  const xTextLabels = [];
+  xLabels.forEach((label, i) => {
+    const sprite = createTextLabelSpriteTransparent({
+      text: label,
+      fontSize: 32,
+      textColor: '#F94646', // red
+      scale: 2.0
+    });
+    sprite.position.set(i - 0.25, -0.5, zIndex); // posisi bawah
+    scene.add(sprite);
+    xTextLabels.push(sprite);
+    sprite.material.rotation = -Math.PI / -4;
+  });
+
+  // Label Y (bergerak di sumbu Z)
+  const yTextLabels = [];
+  yLabels.forEach((label, i) => {
+    const sprite = createTextLabelSpriteTransparent({
+      text: label,
+      fontSize: 40,
+      textColor: '#48ED5F', // green
+      scale: 1.5
+    });
+    sprite.position.set(-0.5, i + 0, zIndex); // posisi kiri
+    scene.add(sprite);
+    yTextLabels.push(sprite);
+    sprite.material.rotation = -Math.PI / 24;
+  });
+
+  // Label Z (statis, tidak bergerak)
+  const zTextLabels = [];
+  zLabels.forEach((label, i) => {
+    const sprite = createTextLabelSpriteTransparent({
+      text: label,
+      fontSize: 48,
+      textColor: '#3160F4', // blue
+      scale: 1.25
+    });
+    sprite.position.set(-0.75, -0.30, i - 0.65); // pojok kiri bawah
+    scene.add(sprite);
+    zTextLabels.push(sprite);
+    sprite.material.rotation = -Math.PI / 8;
+  });
+
+  /*
+  // Buat geometry bidang XZ
+  const planeXZGeo = new THREE.PlaneGeometry(10, 10);
+
+  // Buat material garis tepi
+  const borderMat = new THREE.LineBasicMaterial({ color: 0xffffff, linewidth: 2 }); // linewidth hanya berfungsi di WebGL non-Core
+
+  // Buat edges dari plane
+  const edges = new THREE.EdgesGeometry(planeXZGeo);
+
+  // Buat LineSegments (garis pinggir)
+  const planeXZBorder = new THREE.LineSegments(edges, borderMat);
+
+  // Rotasi agar rata di bidang XZ
+  planeXZBorder.rotation.x = -Math.PI / 2;
+
+  // Posisi sesuai titik tengah plane
+  planeXZBorder.position.z = zIndex + 5;
+  planeXZBorder.position.x = xIndex + 5;
+  planeXZBorder.position.y = yIndex + 10;
+
+  // Tambahkan ke scene
+  scene.add(planeXZBorder);
+  */
+
+  
+
+  // Grid Plane
+
+  function createGridGroup({
+    cellCount = 10,         // jumlah sel (misal: 10x10)
+    cellSize = 1,           // ukuran tiap sel (misal: 1 satuan = 1 kotak)
+    lineRadius = 0.01,      // ketebalan garis (radius silinder)
+    lineColor = 0xffffff,   // warna garis
+    verticalAxis = 'z',     // orientasi grid di sumbu Z (XZ), atau Y (XY), dll
+  } = {}) {
+    const group = new THREE.Group();
+
+    const length = cellCount * cellSize;
+    const material = new THREE.MeshBasicMaterial({ 
+      color: lineColor,     // warna solid (putih)
+      transparent: true,    // aktifkan transparansi
+      opacity: 0.15          // nilai 0 (benar-benar transparan) sampai 1 (solid)
+      });
+
+    // Grid horizontal (searah X)
+    for (let i = 0; i <= cellCount; i++) {
+      const geo = new THREE.CylinderGeometry(lineRadius, lineRadius, length, 8);
+      const mesh = new THREE.Mesh(geo, material);
+
+      // Rotasi silinder agar memanjang di sumbu X (default silinder tegak di Y)
+      mesh.rotation.z = Math.PI / 2;
+
+      // Geser sesuai posisi baris ke-Z
+      mesh.position.set(
+        length / 2, // tengah X
+        0,
+        i * cellSize
+      );
+
+      group.add(mesh);
+    }
+
+    // Grid vertikal (searah Z)
+    for (let j = 0; j <= cellCount; j++) {
+      const geo = new THREE.CylinderGeometry(lineRadius, lineRadius, length, 8);
+      const mesh = new THREE.Mesh(geo, material);
+
+      // Tidak perlu rotasi, default silinder berdiri di Y → rotasi ke X agar jadi vertikal Z
+      mesh.rotation.x = Math.PI / 2;
+
+      // Geser sesuai posisi kolom ke-X
+      mesh.position.set(
+        j * cellSize,
+        0,
+        length / 2 // tengah Z
+      );
+
+      group.add(mesh);
+    }
+
+    /*
+    // Rotasi seluruh grup jika perlu (misalnya jadi XY atau YZ plane)
+    if (verticalAxis === 'y') {
+      group.rotation.x = Math.PI / 2;
+    } else if (verticalAxis === 'x') {
+      group.rotation.z = Math.PI / 2;
+    }
+    */
+
+    return group;
+  }
+
+  // Grid 10x10 di bidang XZ
+  const gridXY = createGridGroup({
+    cellCount: 10,
+    cellSize: 1,
+    lineRadius: 0.02,
+    lineColor: 0xFFFFFF,
+    verticalAxis: 'z', // bisa 'y' atau 'x' juga
+  });
+
+    // Offset Grid XZ
+  gridXY.position.set(xIndex + 0, yIndex + 0, zIndex + 0 - .01);
+  gridXY.rotation.x = Math.PI / -2; // dari bidang XZ → YZ
+
+  scene.add(gridXY);
+
+
+  // Grid 10x10 di bidang XZ
+  const gridXZ = createGridGroup({
+    cellCount: 10,
+    cellSize: 1,
+    lineRadius: 0.02,
+    lineColor: 0xFFFFFF,
+    verticalAxis: 'z', // bisa 'y' atau 'x' juga
+  });
+
+    // Offset Grid XZ
+  gridXZ.position.set(xIndex + 0, yIndex + 0, zIndex + 0);
+
+  scene.add(gridXZ);
+
+  /*
+  // Grid 10x10 di bidang XZ
+  const gridXZtop = createGridGroup({
+    cellCount: 1,
+    cellSize: 10,
+    lineRadius: 0.02,
+    lineColor: 0xFFFFFF,
+    verticalAxis: 'z', // bisa 'y' atau 'x' juga
+  });
+
+    // Offset Grid XZ
+  gridXZtop.position.set(xIndex + 0, yIndex + 10, zIndex + 0);
+
+  scene.add(gridXZtop);
+  */
+
+  // Grid 10x10 di bidang YZ
+  const gridYZ = createGridGroup({
+    cellCount: 10,
+    cellSize: 1,
+    lineRadius: 0.02,
+    lineColor: 0xFFFFFF,
+    verticalAxis: 'z', // bisa 'y' atau 'x' juga
+  });
+
+    // Offset Grid YZ
+  gridYZ.position.set(xIndex + 0, yIndex + 0, zIndex + 0);
+  gridYZ.rotation.z = Math.PI / 2; // dari bidang XZ → YZ
+
+  scene.add(gridYZ);
+
+
+  animate();
+  
+</script>
+
+<script>
+  const toggleBtn = document.getElementById('toggle-guides');
+  const guidesBody = document.getElementById('guides-body');
+  const toggleText = toggleBtn.querySelector('h4');
+  const toggleIcon = toggleBtn.querySelector('.material-symbols-outlined');
+
+  toggleBtn.addEventListener('click', () => {
+    const isHidden = guidesBody.classList.toggle('hidden');
+
+    // Ubah teks dan ikon
+    toggleText.textContent = isHidden ? '+' : '-';
+    //toggleIcon.textContent = isHidden ? 'keyboard_arrow_down' : 'keyboard_arrow_up';
+  });
+</script>
+
+
+</body>
+</html>
