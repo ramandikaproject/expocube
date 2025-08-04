@@ -109,6 +109,18 @@ footer{
     color: var(--blue);
 }
 
+.cyan{
+    color: var(--cyan);
+}
+
+.magenta{
+    color: var(--magenta);
+}
+
+.yellow{
+    color: var(--yellow);
+}
+
 .white{
     color: var(--white01);
 }
@@ -487,7 +499,7 @@ footer{
     display: flex;
     flex-direction: column;
 
-    background-color: rgba(255, 255, 255, .1);
+    background-color: rgba(255, 255, 255, .075);
 
     /*border-style: solid;
     border-color: rgba(255, 255, 255, 1);*/
@@ -495,7 +507,7 @@ footer{
     border-radius: .0rem;
     
     padding: 0rem;
-    margin: 1rem;
+    margin: 1rem 1rem 1rem 1rem;
 }
 
 .control-group-title{
@@ -512,14 +524,18 @@ footer{
 
 .value-control{
     display: flex;
+    justify-content: space-between;
     padding: 1rem;
 }
 
 .value{
-    width: 8rem;
+    min-width: 6rem;
+    
     font-size: 1.5rem;
     text-align: center;
     color: var(--white01);
+
+    padding: 0rem 1rem 0rem 1rem;
 }
 
 .control-group button {
@@ -553,19 +569,23 @@ footer{
     background-color: var(--magenta);
 }
 
-/*.control-group button #blue{
-    border-color: var(--blue);
+.control-info{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+    background-color: rgba(255, 255, 255, .05);
+
+    margin: 0rem 1rem 1rem 1rem;
 }
 
-#result-section {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem;
+.info-content{
+    max-width: 70%;
+}
 
-    background-color: var(--blue);
-}*/
+.info-content p{
+    margin: 1rem 0rem 1rem 0rem;
+}
 
 /* ########## ########## ########## ########## ##########*/
 
@@ -606,8 +626,8 @@ footer{
 }
 
 .image-group.zoom {
-  scrollbar-width: thin;              /* normal | auto | thin */
-  scrollbar-color: var(--white01) rgba(255,255,255,.05);      /* thumb color | track color */
+    scrollbar-width: thin;              /* normal | auto | thin */
+    scrollbar-color: var(--white01) rgba(255,255,255,.05);      /* thumb color | track color */
 }
 
 /* ########## ########## ########## ########## ##########*/
