@@ -580,11 +580,17 @@ footer{
 }
 
 .info-content{
-    max-width: 70%;
+    max-width: 95%;
 }
 
 .info-content p{
     margin: 1rem 0rem 1rem 0rem;
+
+    font-size: 1.20rem;
+}
+
+.info-content strong{
+    font-weight: 500;
 }
 
 /* ########## ########## ########## ########## ##########*/
